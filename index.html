@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <script type="module" src="/js/index.init.js" defer></script>
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon" />
+    <title>Rolling Store | Home</title>
+  </head>
+  <body class="pt-5 mt-2">
+    <header></header>
+    <main>
+      <section
+        class="container-fluid mt-5 text-center d-flex justify-content-center align-items-center"
+      >
+        <img src="/assets/img/logo.png" class="img-fluid" alt="" />
+        <h1 class="display-2 fw-normal ms-5">Rolling Store</h1>
+      </section>
+      <section class="container mt-5 pt-5">
+        <form class="row g-3 align-items-center">
+          <div class="col-12 col-md-4">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                id="searchInput"
+                placeholder="Buscar por nombre"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <select class="form-select" id="priceSelect">
+              <option disabled selected hidden class="default" value="">
+                Filtrar por precio
+              </option>
+              <option value="asc">Precio ascendente</option>
+              <option value="desc">Precio descendiente</option>
+              <option value="disc">Descuento</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-3">
+            <select class="form-select" id="categorySelect">
+              <option disabled selected hidden class="default" value="">
+                Filtrar por categoria
+              </option>
+              <option value="mug">Tazas</option>
+              <option value="notepad">Libretas</option>
+              <option value="keychain">Llaveros</option>
+              <option value="hat">Gorras</option>
+              <option value="bottle">Botellas</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button
+              class="btn btn-dark border-1 border-light w-100"
+              id="clearFilters"
+            >
+              Limpiar filtros
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="container my-5">
+        <div id="cardContainer" class="row"></div>
+      </section>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="cartOffcanvas"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Mi carrito</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="d-flex container w-100 justify-content-around align-items-center"> <h5 id="totalPrice">15000</h5> <button type="button" class="btn btn-outline-light rounded rounded-5" ><a class="text-decoration-none text-light" href="/views/404.html">Finalizar pedido</a> </button></div>
+        <div class="offcanvas-body"></div>
+      </div>
+    </main>
+    <footer class="bgFooter">
+      <div class="container mt-5">
+        <div class="row pb-1 text-white align-items-center">
+          <div class="col-12 text-center p-4 py-2">
+            <div class="d-flex justify-content-center"></div>
+          </div>
+          <div class="col-12 col-md-4 p-4 py-2 text-center">
+            <a href="/index.html">
+              <img
+                src="/assets/img/logo.png"
+                alt="Logo de Rolling Store"
+                class="img-fluid"
+              />
+            </a>
+          </div>
+
+          <div class="col-12 col-md-4 py-3 text-center text-md-start">
+            <div class="mb-1">
+              <div class="mb-1">
+                <a
+                  class="text-secondary text-start text-decoration-none itemFooter"
+                  href="/views/404.html"
+                >
+                  Sobre nosotros</a
+                >
+              </div>
+              <div class="mb-1">
+                <a
+                  class="text-secondary text-decoration-none itemFooter"
+                  href="/views/404.html"
+                >
+                  Contacto</a
+                >
+              </div>
+              <div class="mb-1">
+                <a
+                  class="text-secondary text-decoration-none itemFooter"
+                  href="/views/404.html"
+                  >Centro de ayuda</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 py-3 text-center text-md-start">
+            <div class="mb-1">
+              <div class="mb-1">
+                <a
+                  class="text-secondary text-decoration-none itemFooter"
+                  href="/views/404.html"
+                >
+                  Politica de privacidad</a
+                >
+              </div>
+              <div class="mb-1">
+                <a
+                  class="text-secondary text-decoration-none itemFooter"
+                  href="/views/404.html"
+                >
+                  Preferencias de cookies</a
+                >
+              </div>
+              <div class="mb-1">
+                <a
+                  class="text-secondary text-decoration-none itemFooter"
+                  href="/views/404.html"
+                >
+                  Avisos legales</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="w-100 d-flex justify-content-center">
+            <div class="py-5 py-md-2 mx-3">
+              <a
+                class="h5 text-secondary text-decoration-none"
+                href="https://www.instagram.com/"
+                target="_blank"
+              >
+                <i class="bi bi-instagram display-5"></i>
+              </a>
+            </div>
+            <div class="py-5 py-md-2 mx-3">
+              <a
+                class="h5 text-secondary text-decoration-none"
+                href="https://www.facebook.com/"
+                target="_blank"
+              >
+                <i class="bi bi-facebook display-5"></i>
+              </a>
+            </div>
+            <div class="py-5 py-md-2 mx-3">
+              <a
+                class="h5 text-secondary text-decoration-none"
+                href="https://twitter.com"
+                target="_blank"
+              >
+                <i class="bi bi-twitter display-5"></i>
+              </a>
+            </div>
+            <div class="py-5 py-md-2 mx-3">
+              <a
+                class="h5 text-secondary text-decoration-none"
+                href="https://www.youtube.com/"
+                target="_blank"
+              >
+                <i class="bi bi-youtube display-5"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 pt-2 border-top border-2">
+            <p class="text-white text-center">
+              &copy; 2022 <b>Rolling Store</b> - Todos los Derechos Reservados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
