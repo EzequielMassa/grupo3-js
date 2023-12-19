@@ -40,7 +40,10 @@ const emailFeedback = (email) => {
  * @returns Debe mostrar el feedback de contraseña valida o invalida segun corresponda,devuelve un booleano.
  */
 
-const passwordFeedback = (password) => {}
+const passwordFeedback = (password) => {
+	password.classList.add('is-invalid')
+	return false
+}
 
 /**
  *
@@ -82,8 +85,13 @@ const signUpSubmit = (e) => {
 		signUpFormEmailInput.classList.remove('is-invalid')
 		signUpFormEmailInput.classList.add('is-valid')
 	}
-	validateEmail(inputEmail)
-	validateSignUpPassword(inputPassword)
+	if (!validateSignUpPassword(inputPassword)) {
+		passwordFeedback(signUpFormPasswordInput)
+	} else {
+		formValid.password = true
+		signUpFormPasswordInput.classList.remove('is-invalid')
+		signUpFormPasswordInput.classList.add('is-valid')
+	}
 	validateRepeatPassword(inputPassword, inputRepeatPassword)
 }
 
