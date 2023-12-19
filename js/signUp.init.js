@@ -4,6 +4,7 @@ import { showPassword } from './utils/showPassword.js'
 import { validateEmail } from './validators/validateEmail.js'
 import { validateRepeatPassword } from './validators/validateRepeatPassword.js'
 import { validateSignUpPassword } from './validators/validateSignUpPassword.js'
+import { validateExistingEmail } from './validators/validateExistingEmail.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 	Navbar()
@@ -80,11 +81,13 @@ const signUpSubmit = (e) => {
 		email: false,
 		password: false,
 		repeatPassword: false,
+		existEmail: false,
 	}
-	if (!validateEmail(inputEmail)) {
+	if (!validateEmail(inputEmail) || !validateExistingEmail(inputEmail)) {
 		emailFeedback(signUpFormEmailInput)
 	} else {
 		formValid.email = true
+		formValid.existEmail = true
 		signUpFormEmailInput.classList.remove('is-invalid')
 		signUpFormEmailInput.classList.add('is-valid')
 	}
