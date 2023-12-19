@@ -28,7 +28,11 @@ signUpFormRepeatPassword.addEventListener('paste', (e) => e.preventDefault())
  * @returns {bool} Debe mostrar el feedback de email valido o invalido segun corresponda,devuelve un booleano
  */
 
-const emailFeedback = (email) => {}
+const emailFeedback = (email) => {
+	email.classList.remove('is-valid')
+	email.classList.add('is-invalid')
+	return false
+}
 
 /**
  *
@@ -66,6 +70,18 @@ const signUpSubmit = (e) => {
 	const inputPassword = signUpFormPasswordInput.value.trim()
 	const inputRepeatPassword = signUpFormRepeatPassword.value.trim()
 
+	let formValid = {
+		email: false,
+		password: false,
+		repeatPassword: false,
+	}
+	if (!validateEmail(inputEmail)) {
+		emailFeedback(signUpFormEmailInput)
+	} else {
+		formValid.email = true
+		signUpFormEmailInput.classList.remove('is-invalid')
+		signUpFormEmailInput.classList.add('is-valid')
+	}
 	validateEmail(inputEmail)
 	validateSignUpPassword(inputPassword)
 	validateRepeatPassword(inputPassword, inputRepeatPassword)
