@@ -52,7 +52,10 @@ const passwordFeedback = (password) => {
  * @returns Debe mostrar el feedback de comparación de contraseñas valida o invalida segun corresponda, devuelve un booleano.
  */
 
-const repeatPasswordFeedback = (password, repeatPassword) => {}
+const repeatPasswordFeedback = (password, repeatPassword) => {
+	repeatPassword.classList.add('is-invalid')
+	return false
+}
 
 const showSuccesfulSignUpModal = () => {
 	const modal = new bootstrap.Modal(
@@ -92,7 +95,15 @@ const signUpSubmit = (e) => {
 		signUpFormPasswordInput.classList.remove('is-invalid')
 		signUpFormPasswordInput.classList.add('is-valid')
 	}
-	validateRepeatPassword(inputPassword, inputRepeatPassword)
+	if (!validateRepeatPassword(inputPassword, inputRepeatPassword)) {
+		repeatPasswordFeedback(signUpFormPasswordInput, signUpFormRepeatPassword)
+	} else {
+		formValid.repeatPassword = true
+		signUpFormPasswordInput.classList.remove('is-invalid')
+		signUpFormPasswordInput.classList.add('is-valid')
+		signUpFormRepeatPassword.classList.remove('is-invalid')
+		signUpFormRepeatPassword.classList.add('is-valid')
+	}
 }
 
 signUpForm.addEventListener('submit', signUpSubmit)
