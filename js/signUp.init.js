@@ -70,7 +70,11 @@ const showSuccesfulSignUpModal = () =>{
  */
 const signUpSubmit = (e) =>{
     e.preventDefault()
+    const inputEmail = signUpFormEmailInput.value.trim()
+	const inputPassword = signUpFormPasswordInput.value.trim()
+	const inputRepeatPassword = signUpFormRepeatPassword.value.trim()
 
+	validateEmail(inputEmail)
 }
 
 signUpForm.addEventListener("submit", signUpSubmit)
