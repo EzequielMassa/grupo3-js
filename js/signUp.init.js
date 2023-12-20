@@ -2,9 +2,9 @@ import Navbar from './components/Navbar.js'
 import { redirectIndex } from './utils/redirectIndex.js'
 import { showPassword } from './utils/showPassword.js'
 import { validateEmail } from './validators/validateEmail.js'
+import { validateExistingEmail } from './validators/validateExistingEmail.js'
 import { validateRepeatPassword } from './validators/validateRepeatPassword.js'
 import { validateSignUpPassword } from './validators/validateSignUpPassword.js'
-import { validateExistingEmail } from './validators/validateExistingEmail.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 	Navbar()
