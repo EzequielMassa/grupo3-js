@@ -13,4 +13,6 @@ import { setCartProducts } from "./setCartProducts.js";
 export const removeProductFromCart = (id) => {
 
    };
+/*
+
    
