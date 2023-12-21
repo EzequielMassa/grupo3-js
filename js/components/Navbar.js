@@ -18,7 +18,7 @@ const Navbar = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="/grupo3-js/index.html">Home</a>
         </li>
       
         <li class="nav-item">
@@ -31,7 +31,7 @@ const Navbar = () => {
     <a class="nav-link" href="https://rollingcode.co/#RollingCodeSchool" target="_blank">School</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="./views/404.html">Sobre nosotros</a>
+    <a class="nav-link" href="/grupo3-js/views/404.html">Sobre nosotros</a>
   </li>
       </ul>
 
@@ -40,7 +40,7 @@ const Navbar = () => {
 				loggedUser
 					? ''
 					: `<li class="nav-item">
-      <a class="nav-link" href="./views/login.html">Ingresar <i class="bi bi-box-arrow-in-right"></i></a>
+      <a class="nav-link" href="/grupo3-js/views/login.html">Ingresar <i class="bi bi-box-arrow-in-right"></i></a>
     </li>`
 			}
 
@@ -53,10 +53,10 @@ const Navbar = () => {
 				} <i class="bi bi-person "></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-      <li ><a class="dropdown-item w-100 d-flex" href="./views/404.html">Opciones <i class="bi bi-gear ms-auto"></i></a></li>
+      <li ><a class="dropdown-item w-100 d-flex" href="/grupo3-js/views/404.html">Opciones <i class="bi bi-gear ms-auto"></i></a></li>
       ${
 				loggedUser.role == 'admin'
-					? '<li ><a class="dropdown-item w-100 d-flex" href="./views/admin.html">Panel de administrador <i class="bi bi-gear ms-2"></i></a></li>'
+					? '<li ><a class="dropdown-item w-100 d-flex" href=/grupo3-js/views/admin.html">Panel de administrador <i class="bi bi-gear ms-2"></i></a></li>'
 					: ''
 			}
       <li><a id="logout" onclick="logoutHandler()" class="dropdown-item w-100 d-flex">Cerrar sesion <i class="bi bi-box-arrow-in-left ms-auto"></i></a></li>
