@@ -13,4 +13,8 @@ import { setCartProducts } from "./setCartProducts.js";
 
 export const addProductToCart = (id) => {
 
+    
+if (!getLoggedUser() || getLoggedUser().length == 0)
+[notLoggedRoute()]
+
 };
