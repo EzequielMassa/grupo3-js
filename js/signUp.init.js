@@ -1,10 +1,12 @@
 import Navbar from './components/Navbar.js'
+import { createUser } from './services/createUser.js'
+import { setLoggedUser } from './services/setLoggedUser.js'
 import { redirectIndex } from './utils/redirectIndex.js'
 import { showPassword } from './utils/showPassword.js'
 import { validateEmail } from './validators/validateEmail.js'
+import { validateExistingEmail } from './validators/validateExistingEmail.js'
 import { validateRepeatPassword } from './validators/validateRepeatPassword.js'
 import { validateSignUpPassword } from './validators/validateSignUpPassword.js'
-import { validateExistingEmail } from './validators/validateExistingEmail.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 	Navbar()
@@ -106,6 +108,17 @@ const signUpSubmit = (e) => {
 		signUpFormPasswordInput.classList.add('is-valid')
 		signUpFormRepeatPassword.classList.remove('is-invalid')
 		signUpFormRepeatPassword.classList.add('is-valid')
+	}
+
+	const isValidForm = Object.values(formValid).every((value) => value === true)
+	if (isValidForm) {
+		let user = {
+			email: inputEmail,
+			password: inputPassword,
+		}
+		createUser(user)
+		setLoggedUser(user.email)
+		showSuccesfulSignUpModal()
 	}
 }
 
