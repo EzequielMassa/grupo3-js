@@ -3,5 +3,5 @@
  */
 
 export const redirectIndex = () => {
-	window.location.href = '/grupo3-js/index.html'
+	window.location.href = '/index.html'
 }
