@@ -10,3 +10,5 @@ export const discountPrice = (price, discountPercentage) => {
 
     return precioFinal;
 };
+ 
+// esto es una prueba
