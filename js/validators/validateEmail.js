@@ -7,5 +7,8 @@ import { emailRegex } from "./emailRegex.js";
  */
 
 export const validateEmail = (email) =>{
-    
+    if (!emailRegex.test(email)) {
+		return false
+	}
+	return true
 }
