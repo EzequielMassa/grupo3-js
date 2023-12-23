@@ -84,15 +84,22 @@ const filterByPrice = (value, productsArray) => {
 
 const searchByName = (value) => {
 	let p = JSON.parse(localStorage.getItem('products'))
-	let pFiltered = []
-	console.log(p)
+	let pFiltered = [];
 	//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 	p.forEach((producto) => {
-		if (producto.name == v) lue = pFilteredetlifpp
+		if (producto.name.toLowerCase().includes(value) ) 
+		{
+			pFiltered.push(producto)
+		}
+	
 	})
 
+	//let productoFiltrado = p.filter((product)=> product.name.toLowerCase().includes(value))
+	//console.log(productoFiltrado)
+
 	//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/includes
-	console.log(pFiltered)
+	//console.log(pFiltered)
+	return pFiltered
 }
 
 searchInput.addEventListener('keyup', searchByName)
