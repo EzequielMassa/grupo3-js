@@ -50,15 +50,7 @@ const clearFilters = document.getElementById('clearFilters')
  * @returns {array} Devuelve el arreglo de productos filtrados
  */
 
-/*const filterByCategory = (value, productsArray) => {
-	 let categorySelect = productsArray.filter((product) => product.category == value);
-  
-	if (value) {
-	  return categorySelect;
-	}
-  
-	return productsArray;
-  };*/
+
 
  const filterByCategory = (value, productsArray) => {
 	
