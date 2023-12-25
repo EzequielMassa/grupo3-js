@@ -50,8 +50,6 @@ const clearFilters = document.getElementById('clearFilters')
  * @returns {array} Devuelve el arreglo de productos filtrados
  */
 
-
-
  const filterByCategory = (value, productsArray) => {
 	
 	switch (true) {
@@ -74,7 +72,7 @@ const clearFilters = document.getElementById('clearFilters')
 		case value == 'bottle':
 			categorySelect = productsArray.filter((product) => product.category == value);
 			return categorySelect;
-			break	;	
+			break;	
 		default:
 			return productsArray;
 			break;
