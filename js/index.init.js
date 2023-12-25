@@ -167,6 +167,8 @@ const renderFilteredProducts = (
 	renderProductCards(filteredProducts)
 
 	// ProductNotFoundMessage()
+
+	//fue controlado
 }
 
 searchInput.addEventListener('keyup', (e) => {
