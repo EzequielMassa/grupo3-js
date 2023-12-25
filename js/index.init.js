@@ -28,7 +28,7 @@ const cardContainer = document.getElementById('cardContainer')
  */
 
 const renderProductCards = (products) => {
-	cardContainer.innerHTML = ''
+	cardContainer.innerHTML = ' '
 	products.map((product) => {
 		const visible = product.visible === true
 
@@ -36,11 +36,12 @@ const renderProductCards = (products) => {
 			cardContainer.innerHTML += ProductCard(product)
 		}
 	})
+	
 }
 
 const searchInput = document.getElementById('searchInput')
 const priceSelect = document.getElementById('priceSelect')
-const categorySelect = document.getElementById('categorySelect')
+let categorySelect = document.getElementById('categorySelect')
 const clearFilters = document.getElementById('clearFilters')
 /**
  *
@@ -49,16 +50,34 @@ const clearFilters = document.getElementById('clearFilters')
  * @returns {array} Devuelve el arreglo de productos filtrados
  */
 
-const filterByCategory = (value, productsArray) => {
+ const filterByCategory = (value, productsArray) => {
+	
 	switch (true) {
-		case value === 'mug':
-			categorySelect = productsArray
-			break
-
+		case value == 'mug':
+			 categorySelect = productsArray.filter((product) => product.category == value);
+			return categorySelect;
+			break;
+		case value == 'notepad':
+			categorySelect = productsArray.filter((product) => product.category == value);
+			return categorySelect;
+			break;
+		case value == 'keychain':
+				categorySelect = productsArray.filter((product) => product.category == value);
+				return categorySelect;
+				break;
+		case value == 'hat':
+			categorySelect = productsArray.filter((product) => product.category == value);
+			return categorySelect;
+			break;
+		case value == 'bottle':
+			categorySelect = productsArray.filter((product) => product.category == value);
+			return categorySelect;
+			break;	
 		default:
-			break
+			return productsArray;
+			break;
 	}
-}
+};
 
 /**
  *
@@ -119,7 +138,7 @@ const renderFilteredProducts = (
 ) => {
 	let filteredProducts = searchByName(searchInputValue)
 	filteredProducts = filterByCategory(categorySelectValue, filteredProducts)
-	filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
+	//filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
 
 	renderProductCards(filteredProducts)
 
