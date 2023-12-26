@@ -40,7 +40,7 @@ const renderProductCards = (products) => {
 }
 
 const searchInput = document.getElementById('searchInput')
-const priceSelect = document.getElementById('priceSelect')
+let priceSelect = document.getElementById('priceSelect')
 let categorySelect = document.getElementById('categorySelect')
 const clearFilters = document.getElementById('clearFilters')
 /**
@@ -49,8 +49,6 @@ const clearFilters = document.getElementById('clearFilters')
  * @param {array} productsArray Arreglo de productos a renderizar
  * @returns {array} Devuelve el arreglo de productos filtrados
  */
-
-
 
  const filterByCategory = (value, productsArray) => {
 	
@@ -74,7 +72,7 @@ const clearFilters = document.getElementById('clearFilters')
 		case value == 'bottle':
 			categorySelect = productsArray.filter((product) => product.category == value);
 			return categorySelect;
-			break	;	
+			break;	
 		default:
 			return productsArray;
 			break;
@@ -92,9 +90,33 @@ const filterByPrice = (value, productsArray) => {
 	let comparar = function (a, b) {
 		return a - b
 	}
-	productsArray.price.sort(comparar)
+	 
+	if(value==='asc')
+	{
+		//productsArray.price.sort(comparar)
+		priceSelect = productsArray.sort((a, b) => a.price - b.price);
+		return priceSelect
+	}
+	
+	if(value==='desc')
+	{
+		//productsArray.price.sort(comparar)
+		priceSelect = productsArray.sort((a, b) => b.price - a.price);
+		return priceSelect
+	}
 
-	productsArray.price.sort((a, b) => a.price - b.price)
+	if(value==='disc')
+	{
+		priceSelect = productsArray.filter((product) => product.discountPercentage);
+		priceSelect = priceSelect.sort((a, b) => b.discountPercentage - a.discountPercentage);
+		return priceSelect
+	}
+	if(value)
+	{
+		return priceSelect
+	}
+
+	return productsArray;
 }
 
 /**
@@ -137,7 +159,8 @@ const renderFilteredProducts = (
 ) => {
 	let filteredProducts = searchByName(searchInputValue)
 	filteredProducts = filterByCategory(categorySelectValue, filteredProducts)
-	//filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
+	filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
+
 
 	if(filteredProducts.length==0){
 		return (cardContainer.innerHTML = ProductNotFoundMessage());
@@ -145,6 +168,7 @@ const renderFilteredProducts = (
 	
 		 renderProductCards(filteredProducts);	
 	
+
 }
 
 searchInput.addEventListener('keyup', (e) => {
@@ -171,11 +195,15 @@ categorySelect.addEventListener('change', (e) => {
 	)
 })
 
-clearFilters.addEventListener('click',limpiar) 
+
+
+
+clearFilters.addEventListener('click', limpiar);
+
 function limpiar()
 {
-	let activo = document.activeElement.id;
-	activo.innerHTML = "";
+	let  activo = document.activeElement.id;
+    activo.innerHTML = "";
 }
 
 
