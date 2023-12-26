@@ -164,6 +164,9 @@ const renderFilteredProducts = (
 	filteredProducts = filterByCategory(categorySelectValue, filteredProducts)
 	filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
 
+	if (filteredProducts.length === 0) {
+		return (cardContainer.innerHTML = ProductNotFoundMessage());
+	  }
 	renderProductCards(filteredProducts)
 
 	// ProductNotFoundMessage()
@@ -193,10 +196,10 @@ categorySelect.addEventListener('change', (e) => {
 	)
 })
 
-clearFilters.addEventListener('click', (e) => {
-	e.preventDefault()
-	searchInput.value = ''
-	priceSelect.value = ''
-	categorySelect.value = ''
-	renderProductCards(products)
-})
+clearFilters.addEventListener('click', limpiar);
+
+function limpiar()
+{
+	let  activo = document.activeElement.id;
+    activo.innerHTML = "";
+}
