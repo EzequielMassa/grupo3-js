@@ -196,8 +196,6 @@ categorySelect.addEventListener('change', (e) => {
 })
 
 
-
-
 clearFilters.addEventListener('click', limpiar);
 
 function limpiar()
