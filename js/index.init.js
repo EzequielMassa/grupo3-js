@@ -171,10 +171,11 @@ categorySelect.addEventListener('change', (e) => {
 	)
 })
 
-clearFilters.addEventListener('click', (e) => {
-	e.preventDefault()
-	searchInput.value = ''
-	priceSelect.value = ''
-	categorySelect.value = ''
-	renderProductCards(products)
-})
+clearFilters.addEventListener('click',limpiar) 
+function limpiar()
+{
+	let activo = document.activeElement.id;
+	activo.innerHTML = "";
+}
+
+
