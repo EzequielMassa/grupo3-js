@@ -170,6 +170,8 @@ const renderFilteredProducts = (
 	renderProductCards(filteredProducts)
 
 	// ProductNotFoundMessage()
+
+	//fue controlado
 }
 
 searchInput.addEventListener('keyup', (e) => {
@@ -196,6 +198,7 @@ categorySelect.addEventListener('change', (e) => {
 	)
 })
 
+
 clearFilters.addEventListener('click', limpiar);
 
 function limpiar()
@@ -203,3 +206,4 @@ function limpiar()
 	let  activo = document.activeElement.id;
     activo.innerHTML = "";
 }
+
