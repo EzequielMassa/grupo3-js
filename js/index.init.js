@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar.js'
 import ProductCard from './components/ProductCard.js'
-import ProductNotFoundMessage from './components/ProductNotFoundMessage.js'
+import ProductNotFoundMessage from './components/ProductNotFoundMessage.js';
 import { setProducts } from './services/setProducts.js'
 import { getProducts } from './services/getProducts.js'
 import { createAdminUser } from './services/setAdminUser.js'
@@ -28,7 +28,7 @@ const cardContainer = document.getElementById('cardContainer')
  */
 
 const renderProductCards = (products) => {
-	cardContainer.innerHTML = ' '
+	cardContainer.innerHTML = " "
 	products.map((product) => {
 		const visible = product.visible === true
 
@@ -134,14 +134,11 @@ const searchByName = (value) => {
 		{
 			pFiltered.push(producto)
 		}
+		
 	
 	})
-
-	//let productoFiltrado = p.filter((product)=> product.name.toLowerCase().includes(value))
-	//console.log(productoFiltrado)
-
 	//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/includes
-	//console.log(pFiltered)
+
 	return pFiltered
 }
 
@@ -164,14 +161,14 @@ const renderFilteredProducts = (
 	filteredProducts = filterByCategory(categorySelectValue, filteredProducts)
 	filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
 
-	if (filteredProducts.length === 0) {
+
+	if(filteredProducts.length==0){
 		return (cardContainer.innerHTML = ProductNotFoundMessage());
-	  }
-	renderProductCards(filteredProducts)
+	}
+	
+		 renderProductCards(filteredProducts);	
+	
 
-	// ProductNotFoundMessage()
-
-	//fue controlado
 }
 
 searchInput.addEventListener('keyup', (e) => {
@@ -199,6 +196,8 @@ categorySelect.addEventListener('change', (e) => {
 })
 
 
+
+
 clearFilters.addEventListener('click', limpiar);
 
 function limpiar()
@@ -206,4 +205,5 @@ function limpiar()
 	let  activo = document.activeElement.id;
     activo.innerHTML = "";
 }
+
 
