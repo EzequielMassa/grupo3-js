@@ -26,9 +26,14 @@ export const addProductToCart = (id) => {
         const arrayProducts = []
         arrayProducts.push(product)
         setCartProducts(userId,arrayProducts)
+        cartBadgeHandler()
     }
 
-    const isAlreadyInCart = cartProducts.some((p) => p.id == id)
+    let isAlreadyInCart
+
+    if (cartProducts){
+        isAlreadyInCart = cartProducts.some((p) => p.id == id)
+    }
 
     if (isAlreadyInCart){
         const productInCart = cartProducts.find((p) => p.id == id)
@@ -37,9 +42,11 @@ export const addProductToCart = (id) => {
         cartProducts.splice(productIndex,1)
         cartProducts.push(productInCart)
         setCartProducts(userId,cartProducts)
+        cartBadgeHandler()
         return;
     }
 
     cartProducts.push(product)
     setCartProducts(userId,cartProducts)
+    cartBadgeHandler()
 }

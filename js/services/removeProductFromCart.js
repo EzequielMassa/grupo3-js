@@ -8,6 +8,7 @@ import { getCartProducts } from "./getCartProducts.js";
 import { setCartProducts } from "./setCartProducts.js";
 import {renderCartBody} from "../cart.init.js";
 import { getLoggedUser } from "./getLoggedUser.js";
+import { cartBadgeHandler } from "../utils/cartBadgeHandler.js";
 
 export const removeProductFromCart = (id) => {
 
@@ -21,6 +22,7 @@ export const removeProductFromCart = (id) => {
     if (productInCartQuantity == 1){
         cartProducts.splice(productIndex,1)
         setCartProducts(userId,cartProducts)
+        cartBadgeHandler()
         return;
     }
 
@@ -29,4 +31,5 @@ export const removeProductFromCart = (id) => {
     setCartProducts(userId,cartProducts)
 
     renderCartBody()
+    cartBadgeHandler()
 };

@@ -11,5 +11,5 @@ export const getCartProducts = () => {
 		return
 	}
 	const userCartProducts = JSON.parse(localStorage.getItem(user.id))
-	return userCartProducts
+	return userCartProducts ? userCartProducts : []
 }

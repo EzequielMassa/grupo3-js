@@ -1,6 +1,7 @@
 import { renderCartBody } from '../cart.init.js'
 import { getLoggedUser } from '../services/getLoggedUser.js'
 import { logout } from '../utils/logout.js'
+
 const header = document.querySelector('header')
 
 const Navbar = () => {
