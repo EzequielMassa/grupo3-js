@@ -1,5 +1,7 @@
 import { ProductCardCart } from './components/CartCard.js'
 import { getCartProducts } from './services/getCartProducts.js'
+import { discountPrice } from './utils/discountPrice.js'
+import { formatCurrency } from './utils/formatCurrency.js'
 
 /**\
  * @returns Renderiza los productos y el precio total en el offcanvas del carrito
@@ -17,8 +19,20 @@ const totalPrice = document.getElementById('totalPrice')
 
 const renderCartTotalPrice = () => {
 	const cartProducts = getCartProducts()
-
-	//  totalPrice.textContent = formatCurrency(...)
+	if (cartProducts.length <= 0) {
+		totalPrice.innerText = formatCurrency(0)
+	}
+	let total = cartProducts.reduce((total, product) => {
+		if (product.discountPercentage && product.discountPercentage != 0) {
+			return (
+				total +
+				discountPrice(product.price, product.discountPercentage) *
+					product.quantity
+			)
+		}
+		return total + product.price * product.quantity
+	}, 0)
+	totalPrice.innerText = formatCurrency(total)
 }
 
 /**
