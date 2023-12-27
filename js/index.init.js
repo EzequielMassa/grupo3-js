@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar.js'
 import ProductCard from './components/ProductCard.js'
-import ProductNotFoundMessage from './components/ProductNotFoundMessage.js';
+import ProductNotFoundMessage from './components/ProductNotFoundMessage.js'
 import { setProducts } from './services/setProducts.js'
 import { getProducts } from './services/getProducts.js'
 import { createAdminUser } from './services/setAdminUser.js'
@@ -28,7 +28,7 @@ const cardContainer = document.getElementById('cardContainer')
  */
 
 const renderProductCards = (products) => {
-	cardContainer.innerHTML = " "
+	cardContainer.innerHTML = ' '
 	products.map((product) => {
 		const visible = product.visible === true
 
@@ -36,7 +36,6 @@ const renderProductCards = (products) => {
 			cardContainer.innerHTML += ProductCard(product)
 		}
 	})
-	
 }
 
 const searchInput = document.getElementById('searchInput')
@@ -50,34 +49,43 @@ const clearFilters = document.getElementById('clearFilters')
  * @returns {array} Devuelve el arreglo de productos filtrados
  */
 
- const filterByCategory = (value, productsArray) => {
-	
+const filterByCategory = (value, productsArray) => {
 	switch (true) {
 		case value == 'mug':
-			 categorySelect = productsArray.filter((product) => product.category == value);
-			return categorySelect;
-			break;
+			categorySelect = productsArray.filter(
+				(product) => product.category == value
+			)
+			return categorySelect
+			break
 		case value == 'notepad':
-			categorySelect = productsArray.filter((product) => product.category == value);
-			return categorySelect;
-			break;
+			categorySelect = productsArray.filter(
+				(product) => product.category == value
+			)
+			return categorySelect
+			break
 		case value == 'keychain':
-				categorySelect = productsArray.filter((product) => product.category == value);
-				return categorySelect;
-				break;
+			categorySelect = productsArray.filter(
+				(product) => product.category == value
+			)
+			return categorySelect
+			break
 		case value == 'hat':
-			categorySelect = productsArray.filter((product) => product.category == value);
-			return categorySelect;
-			break;
+			categorySelect = productsArray.filter(
+				(product) => product.category == value
+			)
+			return categorySelect
+			break
 		case value == 'bottle':
-			categorySelect = productsArray.filter((product) => product.category == value);
-			return categorySelect;
-			break;	
+			categorySelect = productsArray.filter(
+				(product) => product.category == value
+			)
+			return categorySelect
+			break
 		default:
-			return productsArray;
-			break;
+			return productsArray
+			break
 	}
-};
+}
 
 /**
  *
@@ -90,33 +98,31 @@ const filterByPrice = (value, productsArray) => {
 	let comparar = function (a, b) {
 		return a - b
 	}
-	 
-	if(value==='asc')
-	{
+
+	if (value === 'asc') {
 		//productsArray.price.sort(comparar)
-		priceSelect = productsArray.sort((a, b) => a.price - b.price);
-		return priceSelect
-	}
-	
-	if(value==='desc')
-	{
-		//productsArray.price.sort(comparar)
-		priceSelect = productsArray.sort((a, b) => b.price - a.price);
+		priceSelect = productsArray.sort((a, b) => a.price - b.price)
 		return priceSelect
 	}
 
-	if(value==='disc')
-	{
-		priceSelect = productsArray.filter((product) => product.discountPercentage);
-		priceSelect = priceSelect.sort((a, b) => b.discountPercentage - a.discountPercentage);
-		return priceSelect
-	}
-	if(value)
-	{
+	if (value === 'desc') {
+		//productsArray.price.sort(comparar)
+		priceSelect = productsArray.sort((a, b) => b.price - a.price)
 		return priceSelect
 	}
 
-	return productsArray;
+	if (value === 'disc') {
+		priceSelect = productsArray.filter((product) => product.discountPercentage)
+		priceSelect = priceSelect.sort(
+			(a, b) => b.discountPercentage - a.discountPercentage
+		)
+		return priceSelect
+	}
+	if (value) {
+		return priceSelect
+	}
+
+	return productsArray
 }
 
 /**
@@ -127,15 +133,12 @@ const filterByPrice = (value, productsArray) => {
 
 const searchByName = (value) => {
 	let p = JSON.parse(localStorage.getItem('products'))
-	let pFiltered = [];
+	let pFiltered = []
 	//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 	p.forEach((producto) => {
-		if (producto.name.toLowerCase().includes(value) ) 
-		{
+		if (producto.name.toLowerCase().includes(value)) {
 			pFiltered.push(producto)
 		}
-		
-	
 	})
 	//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 
@@ -161,14 +164,11 @@ const renderFilteredProducts = (
 	filteredProducts = filterByCategory(categorySelectValue, filteredProducts)
 	filteredProducts = filterByPrice(priceSelectValue, filteredProducts)
 
-
-	if(filteredProducts.length==0){
-		return (cardContainer.innerHTML = ProductNotFoundMessage());
+	if (filteredProducts.length == 0) {
+		return (cardContainer.innerHTML = ProductNotFoundMessage())
 	}
-	
-		 renderProductCards(filteredProducts);	
-	
 
+	renderProductCards(filteredProducts)
 }
 
 searchInput.addEventListener('keyup', (e) => {
@@ -195,13 +195,12 @@ categorySelect.addEventListener('change', (e) => {
 	)
 })
 
+clearFilters.addEventListener('click', limpiar)
 
-clearFilters.addEventListener('click', limpiar);
-
-function limpiar()
-{
-	let  activo = document.activeElement.id;
-    activo.innerHTML = "";
+function limpiar() {
+	const formHomeFilterProducts = document.querySelector(
+		'#formHomeFilterProducts'
+	)
+	formHomeFilterProducts.reset()
+	renderProductCards(products)
 }
-
-
