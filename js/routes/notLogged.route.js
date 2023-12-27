@@ -5,7 +5,7 @@ import { getLoggedUser } from "../services/getLoggedUser.js";
  */
 export const notLoggedRoute = () => {
   const user = getLoggedUser(); 
-  if (!user || !user.isLoggedIn) {
+  if (!user) {
    
     window.location.href = '/views/login.html';
   }
