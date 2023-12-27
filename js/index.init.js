@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setProducts()
 	products = getProducts()
 	// renderCartBody()
-	// cartBadgeHandler()
+	cartBadgeHandler()
 	renderProductCards(products)
 })
 
