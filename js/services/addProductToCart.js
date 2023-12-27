@@ -8,7 +8,8 @@ import { setCartProducts } from "./setCartProducts.js";
 /**
  * 
  * @param {string} id Recibe el ID de un producto
- * @returns En el arreglo de productos del localStorage con la key correspondiente al id del usuario, agrega el producto, de ya existir dentro del carrito, aumentar su atributo "quantity" en 1 
+ * @returns En el arreglo de productos del localStorage con la key correspondiente al id del usuario, 
+ * agrega el producto, de ya existir dentro del carrito, aumentar su atributo "quantity" en 1 
 */
 
 export const addProductToCart = (id) => {
@@ -19,24 +20,26 @@ export const addProductToCart = (id) => {
 
     const userId = getLoggedUser().id;
     const cartProducts = getCartProducts();
-    
-    console.log(cartProducts)
+    const product = getProductById(id)
 
-
-    const productToAdd = getProductById(id);
-
-    const existingProductIndex = cartProducts.findIndex(
-        (product) => product.id === id
-    );
-
-    if (existingProductIndex !== -1) {
-        cartProducts[existingProductIndex].quantity += 1;
-    } else {
-        productToAdd.quantity = 1;
-        cartProducts.push(productToAdd);
+    if (!cartProducts){
+        const arrayProducts = []
+        arrayProducts.push(product)
+        setCartProducts(userId,arrayProducts)
     }
 
-    setCartProducts(userId, cartProducts);
-    cartBadgeHandler();
-    return cartProducts;
-};
+    const isAlreadyInCart = cartProducts.some((p) => p.id == id)
+
+    if (isAlreadyInCart){
+        const productInCart = cartProducts.find((p) => p.id == id)
+        productInCart.quantity ++
+        const productIndex = cartProducts.indexOf(productInCart)
+        cartProducts.splice(productIndex,1)
+        cartProducts.push(productInCart)
+        setCartProducts(userId,cartProducts)
+        return;
+    }
+
+    cartProducts.push(product)
+    setCartProducts(userId,cartProducts)
+}

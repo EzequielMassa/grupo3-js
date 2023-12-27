@@ -1,5 +1,5 @@
-import { User } from "../classes/user.class.js";
-import { getUsers } from "./getUsers.js";
+import { User } from '../classes/user.class.js'
+import { getUsers } from './getUsers.js'
 /**
  *
  * @param {string} email Recibe un email valido
@@ -8,6 +8,8 @@ import { getUsers } from "./getUsers.js";
  */
 
 export const createUser = ({ email, password }) => {
-  const users = getUsers()
-  localStorage.setItem('users', JSON.stringify(email, password));
-};
+	let users = getUsers()
+	const user = new User({ email, password, role: 'user' })
+	users.push(user)
+	localStorage.setItem('users', JSON.stringify(users))
+}
